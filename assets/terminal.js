@@ -99,7 +99,7 @@ const key = function keyEvent(e) {
 			// open song
 			window.open("https://youtu.be/dQw4w9WgXcQ");
 		} else {
-			// executre specific command
+			// execute specific command
 			execute(rawInput);
 		}
 		input.innerHTML = ''; // clear the buffer for the input
