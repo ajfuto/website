@@ -85,11 +85,11 @@ const execute = function executeCommand(rawInput) {
 // happens every time a key gets pressed
 const key = function keyEvent(e) {
 	const rawInput = input.innerHTML;
-	lastInput = rawInput;
+	
 
 	// if Enter gets pressed, process the input further
 	if (e.key === "Enter") {
-
+		lastInput = rawInput;
 		if (rawInput.toLowerCase() === 'clear') {
 			terminalOutput.innerHTML = `<div class=terminal-line><span class="help-msg">Type <span class="code">help</span> for a list of supported commands.</span></div>`;
 		} else if (rawInput.toLowerCase() === "aj_futo_resume.pdf") {
