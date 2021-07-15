@@ -47,7 +47,7 @@ const SUPPORTED_COMMANDS = {
 	`,
 };
 
-let input, terminalOutput;
+let input, terminalOutput, lastInput = '';
 
 const app = () => {
 	input = document.getElementById("userInput");
@@ -56,7 +56,7 @@ const app = () => {
 };
 
 const execute = function executeCommand(rawInput) {
-	rawInput = rawInput.toLowerCase();
+	rawInputLower = rawInput.toLowerCase();
 
 	// this is represents each line of the terminal
 	// this part is the formatted "guest@ajfu.to:~$" at the beginning of each line
@@ -67,12 +67,12 @@ const execute = function executeCommand(rawInput) {
 	if (rawInput.length === 0) {
 		// do nothing because we're not adding anything to this line's output
 		// we're just printing the "guest@ajfu.to:~$" bit
-	} else if (!SUPPORTED_COMMANDS.hasOwnProperty(rawInput)) {
+	} else if (!SUPPORTED_COMMANDS.hasOwnProperty(rawInputLower)) {
 		// the entered input does not exist within COMMANDS
 		output += `<div class="terminal-line">${rawInput}: command not found</div>`;
 	} else {
 		// input exists in commands, so add desired output
-		output += SUPPORTED_COMMANDS[rawInput];
+		output += SUPPORTED_COMMANDS[rawInputLower];
 	}
 
 	// add our formatted HTML output to the existing HTML
@@ -85,16 +85,17 @@ const execute = function executeCommand(rawInput) {
 // happens every time a key gets pressed
 const key = function keyEvent(e) {
 	const rawInput = input.innerHTML;
+	lastInput = rawInput;
 
 	// if Enter gets pressed, process the input further
 	if (e.key === "Enter") {
 
-		if (rawInput === 'clear') {
+		if (rawInput.toLowerCase() === 'clear') {
 			terminalOutput.innerHTML = `<div class=terminal-line><span class="help-msg">Type <span class="code">help</span> for a list of supported commands.</span></div>`;
-		} else if (rawInput === "aj_futo_resume.pdf") {
+		} else if (rawInput.toLowerCase() === "aj_futo_resume.pdf") {
 			// open resume
 			window.open("./assets/aj_futo_resume.pdf");
-		} else if (rawInput === "song.mp3") {
+		} else if (rawInput.toLowerCase() === "song.mp3") {
 			// open song
 			window.open("https://youtu.be/dQw4w9WgXcQ");
 		} else {
@@ -104,7 +105,6 @@ const key = function keyEvent(e) {
 		input.innerHTML = ''; // clear the buffer for the input
 		return;
 	}
-
 	input.innerHTML = rawInput + e.key;
 };
 
@@ -118,6 +118,14 @@ const backspace = function backSpaceKeyEvent(e) {
 	);
 };
 
+const upArrow = function upArrowKeyEvent(e) {
+	if (e.keyCode !== 38) {
+		return;
+	}
+	input.innerHTML = lastInput;
+}
+
 document.addEventListener("keydown", backspace);
+document.addEventListener("keydown", upArrow);
 document.addEventListener("keypress", key);
 document.addEventListener("DOMContentLoaded", app);
