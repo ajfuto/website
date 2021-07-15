@@ -47,8 +47,9 @@ const SUPPORTED_COMMANDS = {
 	`,
 };
 
-let input, terminalOutput, previousInputs = [];
-let inputIndex;
+let input, terminalOutput, currentInput // strings
+let inputArray = []; // array
+let inputIndex = 0; // number
 
 const app = () => {
 	input = document.getElementById("userInput");
@@ -56,6 +57,7 @@ const app = () => {
 	document.getElementById("dummyKeyboard").focus();
 };
 
+// executes command
 const execute = function executeCommand(rawInput) {
 	rawInputLower = rawInput.toLowerCase();
 
@@ -65,7 +67,7 @@ const execute = function executeCommand(rawInput) {
 	let output = `<div class="terminal-line"><span class="user">guest@ajfu.to</span><span class="white_console">:</span><span class="directory">~</span><span class="white_console">$</span> ${rawInput}</div>`;
 	
 	// do different things based on the input
-	if (rawInput.length === 0) {
+	if (rawInput.replace(/\s/g, '').length == 0) {
 		// do nothing because we're not adding anything to this line's output
 		// we're just printing the "guest@ajfu.to:~$" bit
 	} else if (!SUPPORTED_COMMANDS.hasOwnProperty(rawInputLower)) {
@@ -86,12 +88,22 @@ const execute = function executeCommand(rawInput) {
 // happens every time a key gets pressed
 const key = function keyEvent(e) {
 	const rawInput = input.innerHTML;
-	inputIndex = previousInputs.length+1;
-	
+	inputIndex = inputArray.length+1;
 
 	// if Enter gets pressed, process the input further
 	if (e.key === "Enter") {
-		previousInputs.push(rawInput);
+
+		// only add the current rawInput to the previousInputs if it isn't blank
+		// basically says:
+		// if (we replace every whitespace character in our rawInput with nothing, and the length of that resultant string is NOT zero)
+		// then we push the input to our inputArray
+		if (rawInput.replace(/\s/g, '').length != 0) {
+			inputArray.push(rawInput);
+			currentInput = '';
+		}
+
+		// process special cases (clear, resume, song)
+		// else, pass rawInput to execute function
 		if (rawInput.toLowerCase() === 'clear') {
 			terminalOutput.innerHTML = `<div class=terminal-line><span class="help-msg">Type <span class="code">help</span> for a list of supported commands.</span></div>`;
 		} else if (rawInput.toLowerCase() === "aj_futo_resume.pdf") {
@@ -104,40 +116,49 @@ const key = function keyEvent(e) {
 			// execute specific command
 			execute(rawInput);
 		}
+
 		input.innerHTML = ''; // clear the buffer for the input
+		console.log("within " + inputArray);
 		return;
 	}
+	console.log(e.key);
+
+	currentInput = rawInput + e.key;
 	input.innerHTML = rawInput + e.key;
+	console.log(inputArray);
 };
 
+// function to deal with backspace being pressed
 const backspace = function backSpaceKeyEvent(e) {
 	if (e.keyCode !== 8) {
 		return;
 	}
-	input.innerHTML = input.innerHTML.slice(
-		0,
-		input.innerHTML.length - 1
-	);
+	input.innerHTML = input.innerHTML.slice(0, input.innerHTML.length - 1);
 };
 
+// function to deal with the up arrow being pressed, emulating terminal behavior
 const upArrow = function upArrowKeyEvent(e) {
-	if (e.keyCode !== 38 || previousInputs.length == 0) {
+	if (e.keyCode !== 38 || inputArray.length == 0) {
 		return;
 	}
-
 	inputIndex--;
 	inputIndex = Math.max(0, inputIndex);
-	input.innerHTML = previousInputs[inputIndex];
+	input.innerHTML = inputArray[inputIndex];
 }
 
+// function to deal with the down arrow being pressed, emulating terminal behavior
 const downArrow = function downArrowEvent(e) {
-	if (e.keyCode !== 40 || previousInputs.length == 0 || previousInputs.length == inputIndex) {
+	if (e.keyCode !== 40 || inputArray.length == 0 || inputArray.length == inputIndex) {
 		return;
 	}
 
 	inputIndex++;
-	inputIndex = Math.min(previousInputs.length-1, inputIndex);
-	input.innerHTML = previousInputs[inputIndex];
+	if (inputIndex > inputArray.length-1) {
+		input.innerHTML = currentInput;
+		inputIndex = Math.min(inputArray.length-1, inputIndex);
+	} else {
+		input.innerHTML = inputArray[inputIndex];
+	}
 }
 
 document.addEventListener("keydown", backspace);
