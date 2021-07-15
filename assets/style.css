@@ -127,7 +127,6 @@ p {
 	padding: 0.5rem 0rem 0rem 0.5rem;
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 }
 
 .terminal-background {
