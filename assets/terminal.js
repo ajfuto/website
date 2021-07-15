@@ -47,7 +47,8 @@ const SUPPORTED_COMMANDS = {
 	`,
 };
 
-let input, terminalOutput, lastInput = '';
+let input, terminalOutput, previousInputs = [];
+let inputIndex;
 
 const app = () => {
 	input = document.getElementById("userInput");
@@ -85,11 +86,12 @@ const execute = function executeCommand(rawInput) {
 // happens every time a key gets pressed
 const key = function keyEvent(e) {
 	const rawInput = input.innerHTML;
+	inputIndex = previousInputs.length+1;
 	
 
 	// if Enter gets pressed, process the input further
 	if (e.key === "Enter") {
-		lastInput = rawInput;
+		previousInputs.push(rawInput);
 		if (rawInput.toLowerCase() === 'clear') {
 			terminalOutput.innerHTML = `<div class=terminal-line><span class="help-msg">Type <span class="code">help</span> for a list of supported commands.</span></div>`;
 		} else if (rawInput.toLowerCase() === "aj_futo_resume.pdf") {
@@ -119,13 +121,27 @@ const backspace = function backSpaceKeyEvent(e) {
 };
 
 const upArrow = function upArrowKeyEvent(e) {
-	if (e.keyCode !== 38) {
+	if (e.keyCode !== 38 || previousInputs.length == 0) {
 		return;
 	}
-	input.innerHTML = lastInput;
+
+	inputIndex--;
+	inputIndex = Math.max(0, inputIndex);
+	input.innerHTML = previousInputs[inputIndex];
+}
+
+const downArrow = function downArrowEvent(e) {
+	if (e.keyCode !== 40 || previousInputs.length == 0 || previousInputs.length == inputIndex) {
+		return;
+	}
+
+	inputIndex++;
+	inputIndex = Math.min(previousInputs.length-1, inputIndex);
+	input.innerHTML = previousInputs[inputIndex];
 }
 
 document.addEventListener("keydown", backspace);
 document.addEventListener("keydown", upArrow);
+document.addEventListener("keydown", downArrow);
 document.addEventListener("keypress", key);
 document.addEventListener("DOMContentLoaded", app);
