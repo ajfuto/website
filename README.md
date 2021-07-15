@@ -1,1 +1,1 @@
-# AJ Futo Personal Website
+# ajfu.to personal website
