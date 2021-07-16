@@ -1,131 +1,132 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>A.J. Futo</title>
-    <link rel="stylesheet" href="./assets/style.css" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>A.J. Futo</title>
+	<link rel="stylesheet" href="./assets/style.css" />
 
-    <!-- fonts, bulma, icons-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto+Mono"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
-    />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
-    ></script>
+	<!-- fonts, bulma, icons-->
+	<link
+	  href="https://fonts.googleapis.com/css?family=Roboto+Mono"
+	  rel="stylesheet"
+	/>
+	<link
+	  rel="stylesheet"
+	  href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
+	/>
+	<script
+	  defer
+	  src="https://use.fontawesome.com/releases/v5.15.3/js/all.js"
+	></script>
 
-    <!-- favicon information -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./assets/favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./assets/favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="./assets/favicon/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#da532c" />
-    <meta name="theme-color" content="#ffffff" />
+	<!-- favicon information -->
+	<link
+	  rel="apple-touch-icon"
+	  sizes="180x180"
+	  href="./assets/favicon/apple-touch-icon.png"
+	/>
+	<link
+	  rel="icon"
+	  type="image/png"
+	  sizes="32x32"
+	  href="./assets/favicon/favicon-32x32.png"
+	/>
+	<link
+	  rel="icon"
+	  type="image/png"
+	  sizes="16x16"
+	  href="./assets/favicon/favicon-16x16.png"
+	/>
+	<link rel="manifest" href="./assets/favicon/site.webmanifest" />
+	<meta name="msapplication-TileColor" content="#da532c" />
+	<meta name="theme-color" content="#ffffff" />
   </head>
 
   <body>
-    <section class="hero is-fullheight">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns is-vcentered">
-            <div class="column is-3 is-flex">
-              <div class="column-child sidebar shadow">
-                <div class="sidebar-header has-text-centered">
-                  <img src="./assets/aj_memoji.png" class="sidebar-image" />
-                  <h2 class="name">A.J. Futo</h2>
-                  <h5>SFS Scholar | CS @ UCF</h5>
-                  <div class="social-icons">
-                    <a href="mailto:futoaj@gmail.com" target="_blank"
-                      ><i class="fas fa-envelope icon"></i
-                    ></a>
-                    <a
-                      href="https://www.linkedin.com/in/ajfuto/"
-                      target="_blank"
-                      ><i class="fab fa-linkedin icon"></i
-                    ></a>
-                    <a href="https://twitter.com/ajfuto/" target="_blank"
-                      ><i class="fab fa-twitter icon"></i
-                    ></a>
-                    <!-- <a href="https://github.com/ajfuto" target="_blank"><i class="fab fa-github icon"></i></a> -->
-                    <div class="resume">
-                      <a
-                        href="./assets/aj_futo_resume.pdf"
-                        class="link"
-                        target="_blank"
-                        >resume</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="column is-flex">
-              <div class="column-child terminal shadow">
-                <div class="terminal-bar dark-mode">
-                  <div class="icon-btn close"></div>
-                  <div class="icon-btn minimize"></div>
-                  <div class="icon-btn zoom"></div>
-                  <div class="terminal-bar-text">Terminal</div>
-                </div>
-                <div
-                  class="terminal-window terminal-background"
-                  onclick="document.getElementById('dummyKeyboard').focus();"
-                >
-                  <div class="terminal-output" id="terminalOutput">
-                    <div class="terminal-line">
-                      <span class="help-msg"
-                        >Type <span class="code">help</span> for a list of
-                        supported commands.</span
-                      >
-                    </div>
-                  </div>
-                  <div class="terminal-line">
-                    <span class="user">guest@ajfu.to</span
-                    ><span class="white_console">:</span
-                    ><span class="directory">~</span
-                    ><span class="white_console">$</span>
-                    <span class="user-input" id="userInput"></span>
-                    <input
-                      type="text"
-                      id="dummyKeyboard"
-                      class="dummy-keyboard"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="content has-text-centered">
-          <a href="http://ajfu.to" class="link">ajfu.to</a
-          ><br />
-          inspiration from
-          <a href="https://joey.dev" class="link" target="_blank">joey.dev</a>
-        </div>
-      </footer>
-    </section>
+	<section class="hero is-fullheight">
+	  <div class="hero-body">
+		<div class="container">
+		  <div class="columns is-vcentered">
+			<div class="column is-3 is-flex">
+			  <div class="column-child sidebar shadow">
+				<div class="sidebar-header has-text-centered">
+				  <img src="./assets/aj_memoji.png" class="sidebar-image" />
+				  <h2 class="name">A.J. Futo</h2>
+				  <h5>SFS Scholar | CS @ UCF</h5>
+				  <div class="social-icons">
+					<a href="mailto:futoaj@gmail.com" target="_blank"
+					  ><i class="fas fa-envelope icon"></i
+					></a>
+					<a
+					  href="https://www.linkedin.com/in/ajfuto/"
+					  target="_blank"
+					  ><i class="fab fa-linkedin icon"></i
+					></a>
+					<a href="https://twitter.com/ajfuto/" target="_blank"
+					  ><i class="fab fa-twitter icon"></i
+					></a>
+					<a href="https://github.com/ajfuto" target="_blank"
+					  ><i class="fab fa-github icon"></i
+					></a>
+					<div class="resume">
+					  <a
+						href="./assets/aj_futo_resume.pdf"
+						class="link"
+						target="_blank"
+						>resume</a
+					  >
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<div class="column is-flex">
+			  <div class="column-child terminal shadow">
+				<div class="terminal-bar dark-mode">
+				  <div class="icon-btn close"></div>
+				  <div class="icon-btn minimize"></div>
+				  <div class="icon-btn zoom"></div>
+				  <div class="terminal-bar-text">Terminal</div>
+				</div>
+				<div
+				  class="terminal-window terminal-background"
+				  onclick="document.getElementById('dummyKeyboard').focus();"
+				>
+				  <div class="terminal-output" id="terminalOutput">
+					<div class="terminal-line">
+					  <span class="help-msg"
+						>Type <span class="code">help</span> for a list of
+						supported commands.</span
+					  >
+					</div>
+				  </div>
+				  <div class="terminal-line">
+					<span class="user">guest@ajfu.to</span
+					><span class="white_console">:</span
+					><span class="directory">~</span
+					><span class="white_console">$</span>
+					<span class="user-input" id="userInput"></span>
+					<input
+					  type="text"
+					  id="dummyKeyboard"
+					  class="dummy-keyboard"
+					/>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <footer class="footer">
+		<div class="content has-text-centered">
+		  <a href="http://ajfu.to" class="link">ajfu.to</a><br />
+		  inspiration from
+		  <a href="https://joey.dev" class="link" target="_blank">joey.dev</a>
+		</div>
+	  </footer>
+	</section>
   </body>
   <script src="./assets/terminal.js"></script>
 </html>
