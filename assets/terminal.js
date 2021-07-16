@@ -89,6 +89,7 @@ const execute = function executeCommand(rawInput) {
 const key = function keyEvent(e) {
 	const rawInput = input.innerHTML;
 	inputIndex = inputArray.length+1;
+	let output = `<div class="terminal-line"><span class="user">guest@ajfu.to</span><span class="white_console">:</span><span class="directory">~</span><span class="white_console">$</span> ${rawInput}</div>`;
 
 	// if Enter gets pressed, process the input further
 	if (e.key === "Enter") {
@@ -107,25 +108,24 @@ const key = function keyEvent(e) {
 		if (rawInput.toLowerCase() === 'clear') {
 			terminalOutput.innerHTML = `<div class=terminal-line><span class="help-msg">Type <span class="code">help</span> for a list of supported commands.</span></div>`;
 		} else if (rawInput.toLowerCase() === "aj_futo_resume.pdf") {
-			// open resume
-			window.open("./assets/aj_futo_resume.pdf");
+			window.open("./assets/aj_futo_resume.pdf"); // opens resume
+			terminalOutput.innerHTML += `<div class="terminal-line">${output}</div>`;
+			terminalOutput.scrollTop = terminalOutput.scrollHeight;
 		} else if (rawInput.toLowerCase() === "song.mp3") {
-			// open song
-			window.open("https://youtu.be/dQw4w9WgXcQ");
+			window.open("https://youtu.be/dQw4w9WgXcQ"); // opens song
+			terminalOutput.innerHTML += `<div class="terminal-line">${output}</div>`;
+			terminalOutput.scrollTop = terminalOutput.scrollHeight;
 		} else {
 			// execute specific command
 			execute(rawInput);
 		}
 
 		input.innerHTML = ''; // clear the buffer for the input
-		console.log("within " + inputArray);
 		return;
 	}
-	console.log(e.key);
 
 	currentInput = rawInput + e.key;
 	input.innerHTML = rawInput + e.key;
-	console.log(inputArray);
 };
 
 // function to deal with backspace being pressed
