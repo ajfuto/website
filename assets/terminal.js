@@ -155,7 +155,7 @@ const downArrow = function downArrowEvent(e) {
 	inputIndex++;
 	if (inputIndex > inputArray.length-1) {
 		input.innerHTML = currentInput;
-		inputIndex = Math.min(inputArray.length-1, inputIndex);
+		inputIndex = Math.min(inputArray.length, inputIndex);
 	} else {
 		input.innerHTML = inputArray[inputIndex];
 	}
