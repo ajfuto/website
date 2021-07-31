@@ -89,30 +89,32 @@
 				  <div class="icon-btn zoom"></div>
 				  <div class="terminal-bar-text">Terminal</div>
 				</div>
-				<div
-				  class="terminal-window terminal-background"
-				  onclick="document.getElementById('dummyKeyboard').focus();"
-				>
-				  <div class="terminal-output" id="terminalOutput">
-					<div class="terminal-line">
-					  <span class="help-msg"
-						>Type <span class="code">help</span> for a list of
-						supported commands.</span
-					  >
+				<div class="terminal" id ="terminal">
+					<div
+					class="terminal-window"
+					onclick="document.getElementById('dummyKeyboard').focus();"
+					>
+					<div class="terminal-output" id="terminalOutput">
+						<div class="terminal-line">
+						<span class="help-msg"
+							>Type <span class="code">help</span> for a list of
+							supported commands.</span
+						>
+						</div>
 					</div>
-				  </div>
-				  <div class="terminal-line">
-					<span class="user">guest@ajfu.to</span
-					><span class="white_console">:</span
-					><span class="directory">~</span
-					><span class="white_console">$</span>
-					<span class="user-input" id="userInput"></span>
-					<input
-					  type="text"
-					  id="dummyKeyboard"
-					  class="dummy-keyboard"
-					/>
-				  </div>
+					<div class="terminal-line">
+						<span class="user">guest@ajfu.to</span
+						><span class="white_console">:</span
+						><span class="directory">~</span
+						><span class="white_console">$</span>
+						<span class="user-input" id="userInput"></span>
+						<input
+						type="text"
+						id="dummyKeyboard"
+						class="dummy-keyboard"
+						/>
+					</div>
+				</div>
 				</div>
 			  </div>
 			</div>

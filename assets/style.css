@@ -34,7 +34,6 @@ p {
 ::-webkit-scrollbar {
 	display: none;
 }
-
 /* sidebar content */
 
 .sidebar {
@@ -102,6 +101,16 @@ p {
 
 /* terminal content */
 
+.terminal {
+	overflow: auto;
+	overflow-y: auto;
+	background-color: rgb(46, 52, 66);
+	border-radius: 5px;
+	word-wrap: break-word;
+	word-break: break-all;
+	width: 100%;
+}
+
 .terminal-bar {
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -145,11 +154,6 @@ p {
 	flex-direction: column;
 }
 
-.terminal-output {
-	overflow-y: hidden;
-	overflow: auto;
-}
-
 .column-child {
 	flex: 1;
 }
@@ -190,9 +194,6 @@ p {
 .dummy-keyboard {
 	opacity: 0;
 	filter: alpha(opacity=0);
+	background-color: rgba(0, 0,);
 }
 
-input {
-	word-wrap: break-word;
-	word-break: break-all;
-}

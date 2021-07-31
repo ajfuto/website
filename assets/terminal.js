@@ -47,13 +47,15 @@ const SUPPORTED_COMMANDS = {
 	`,
 };
 
-let input, terminalOutput, currentInput; // strings
+let input, terminalOutput, currentInput, myTerminal; // strings
 let inputArray = []; // array
 let inputIndex = 0; // number
 
 const app = () => {
   input = document.getElementById("userInput");
   terminalOutput = document.getElementById("terminalOutput");
+  myTerminal = document.getElementById("terminal");
+  keyboard = document.getElementById("dummyKeyboard");
   document.getElementById("dummyKeyboard").focus();
 };
 
@@ -87,12 +89,15 @@ const execute = function executeCommand(rawInput) {
 
 // happens every time a key gets pressed
 const key = function keyEvent(e) {
+  myTerminal.scrollTop = myTerminal.scrollHeight;
+  console.log(input.innerHTML);
   const rawInput = input.innerHTML;
   inputIndex = inputArray.length + 1;
   let output = `<div class="terminal-line"><span class="user">guest@ajfu.to</span><span class="white_console">:</span><span class="directory">~</span><span class="white_console">$</span> ${rawInput}</div>`;
 
   // if Enter gets pressed, process the input further
   if (e.key === "Enter") {
+    keyboard.value = '';
     // only add the current rawInput to the previousInputs if it isn't blank
     // basically says:
     // if (we replace every whitespace character in our rawInput with nothing, and the length of that resultant string is NOT zero)
@@ -109,22 +114,22 @@ const key = function keyEvent(e) {
     } else if (rawInput.toLowerCase() === "aj_futo_resume.pdf") {
       window.open("./assets/aj_futo_resume.pdf"); // opens resume
       terminalOutput.innerHTML += `<div class="terminal-line">${output}</div>`;
-      terminalOutput.scrollTop = terminalOutput.scrollHeight;
     } else if (rawInput.toLowerCase() === "song.mp3") {
       window.open("https://youtu.be/dQw4w9WgXcQ"); // opens song
       terminalOutput.innerHTML += `<div class="terminal-line">${output}</div>`;
-      terminalOutput.scrollTop = terminalOutput.scrollHeight;
     } else {
       // execute specific command
       execute(rawInput);
     }
 
     input.innerHTML = ""; // clear the buffer for the input
+    myTerminal.scrollTop = myTerminal.scrollHeight;
     return;
   }
 
   currentInput = rawInput + e.key;
   input.innerHTML = rawInput + e.key;
+  myTerminal.scrollTop = myTerminal.scrollHeight;
 };
 
 // function to deal with backspace being pressed
