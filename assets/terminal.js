@@ -90,7 +90,6 @@ const execute = function executeCommand(rawInput) {
 // happens every time a key gets pressed
 const key = function keyEvent(e) {
   myTerminal.scrollTop = myTerminal.scrollHeight;
-  console.log(input.innerHTML);
   const rawInput = input.innerHTML;
   inputIndex = inputArray.length + 1;
   let output = `<div class="terminal-line"><span class="user">guest@ajfu.to</span><span class="white_console">:</span><span class="directory">~</span><span class="white_console">$</span> ${rawInput}</div>`;
