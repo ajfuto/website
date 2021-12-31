@@ -194,6 +194,8 @@ p {
 .dummy-keyboard {
 	opacity: 0;
 	filter: alpha(opacity=0);
-	background-color: rgba(0, 0,);
+	background-color: rgba(0, 0, 0, 0);
+	width: 0;
+	height: 0;
 }
 
