@@ -30,7 +30,7 @@ const SUPPORTED_COMMANDS = {
 			<li>- Supporting <strong>over 200</strong> remote and local devices and users
 		</ul>`,
 
-  certifications: `<span class="code">Security</span>: CompTIA Security+ (soon!), MTA: Security Fundamentals<br>
+  certifications: `<span class="code">Security</span>: CompTIA Security+, MTA: Security Fundamentals<br>
 	<span class="code">Networking</span>: CompTIA Network+, TestOut Network Pro<br>
 	<span class="code">Misc.</span>: CompTIA A+`,
 
